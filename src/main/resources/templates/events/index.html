@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Coding Events 3</title>
+</head>
+<header>
+    <div th:replace="fragments :: navigation"></div>
+</header>
+<body>
+
+    <h1>All Events (in Coding Events 3)</h1>
+
+    <p th:unless="${events} and ${events.size()}">No Events Listed! <br> Please add some events</p>
+    <ul>
+        <th:block th:each="event:${events}">
+            <li th:text="${event}"> Blank Blank</li>
+        </th:block>
+    </ul>
+
+</body>
+</html>

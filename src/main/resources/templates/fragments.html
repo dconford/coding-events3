@@ -1,16 +1,39 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
-<head>
+<head th:fragment="head">
     <meta charset="UTF-8"/>
-    <title>Title</title>
+    <title>Coding Events 3</title>
+
+<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">-->
+<!--  Remember no th: link if file is not local!!!!!! -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+
+
+<!-- these are to demonstrate local options for formatting (stylesheets) and scripting -->
+<!-- switching to Bootstrap, that imports from remote locale, is more robust -->
+    <script th:src="@{/script.js}"></script>
+<!--    <link th:href="@{/styles.css}" rel="stylesheet">-->
+
 </head>
 <body>
     <nav th:fragment="navigation">
-    <ul>
-        <li><a href="/events">All The Events Listed</a></li>
-        <li><a href="/events/create">Create an Event</a> </li>
-        <li><a href="/">Return to Home Page</a></li>
+    <ul class="nav">
+        <li class="nav-item"><a class="nav-link" href="/events">All The Events Listed</a></li>
+        <li class="nav-item"><a class="nav-link" href="/events/create">Create an Event</a> </li>
+        <li class="nav-item"><a class="nav-link" href="/">Return to Home Page</a></li>
     </ul>
     </nav>
+
+
+    <td th:fragment="address">1369 Sunshine Drive, Terrapin Siding, USA</td>
+
+    <td th:fragment="testimage"><img th:src="@{/8ball.png}" width="30" height="30"/></td>
+
+
+<!--    <img th:src="@{/img/logo.png}" alt="memorynotfound logo"/>-->
+
+
+<!--    <img th:src="@{/images/8Ball.png}"/>-->
 </body>
 </html>

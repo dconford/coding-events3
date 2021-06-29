@@ -1,22 +1,38 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Coding Events 3</title>
-</head>
+<head th:replace="fragments :: head"></head>
 <header>
     <div th:replace="fragments :: navigation"></div>
 </header>
-<body>
+<body class="container">
 
     <h1>All Events (in Coding Events 3)</h1>
 
     <p th:unless="${events} and ${events.size()}">No Events Listed! <br> Please add some events</p>
-    <ul>
-        <th:block th:each="event:${events}">
-            <li th:text="${event}"> Blank Blank</li>
-        </th:block>
-    </ul>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Location</th>
+                <th>Thumbnail</th>
+            </tr>
+        </thead>
+        <tr th:each="event:${events}">
+            <td th:text="${event.key}"> Blank Blank</td>
+            <td th:text="${event.value}"> Blank Blank</td>
+            <td th:replace="fragments :: address">Bl</td>
+            <td th:replace="fragments :: testimage">AAAA</td>
+        </tr>
+    </table>
+
+
+<!--    <div th:each="event: ${eventMap}">-->
+<!--        <p th:text="${event.key}">No Id!</p>-->
+<!--        <p th:text="${event.value}">No Name!</p>-->
+<!--    </div>-->
+
+
 
 </body>
 </html>

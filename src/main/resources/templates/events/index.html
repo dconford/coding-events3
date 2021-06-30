@@ -12,6 +12,7 @@
     <table class="table table-striped">
         <thead>
             <tr>
+                <th>ID</th>
                 <th>Name</th>
                 <th>Description</th>
                 <th>Location</th>
@@ -19,6 +20,7 @@
             </tr>
         </thead>
         <tr th:each="event:${events}">
+            <td th:text="${event.id}">Apples</td>
             <td th:text="${event.name}"> Blank Blank</td>
             <td th:text="${event.description}"> Blank Blank</td>
             <td th:replace="fragments :: address">Bl</td>

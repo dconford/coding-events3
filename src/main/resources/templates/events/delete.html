@@ -18,8 +18,33 @@
             </label>
             </div>
         </th:block>
+
+    <p>
+        <label>Check Events to Remove:<br>
+            <input type="checkbox" name="eventIds"
+                   th:each="event : ${events}"
+                   th:text="${event.name}"
+                   th:value="${event.id}"
+            /><br>
+        </label>
+    </p>
+
+
     <input type="submit" value="Delete" class="btn btn-danger">
 </form>
 
 </body>
 </html>
+<!--comment
+<form th:action="@{/users/save}" th:object="${user}" method="post">
+<p>
+    <label>Delete Events:
+        <input type="checkbox" name="eventIds"
+            th:each="event : ${events}"
+            th:text="${event.name}"
+            th:value="${event.id}"
+        />
+    </label>
+</p>
+</form>
+-->

@@ -2,12 +2,12 @@ package org.launchcode.codingevents3.controllers;
 
 import org.launchcode.codingevents3.data.EventData;
 import org.launchcode.codingevents3.models.Event;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
-import javax.websocket.server.PathParam;
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("events")
@@ -25,7 +25,12 @@ public class EventController {
   }
 
   @PostMapping("create")
-  public String createEvent(@ModelAttribute Event newEvent) {
+  public String createEvent(@ModelAttribute @Valid Event newEvent, Errors errors, Model model) {
+    if(errors.hasErrors()) {
+      model.addAttribute("title", "Create Event");
+      model.addAttribute( "errorMsg", "Bad data!");
+      return "events/create";
+    }
     EventData.add(newEvent);
     return "redirect:";
   }

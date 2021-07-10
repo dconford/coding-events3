@@ -8,6 +8,8 @@
 <body class="container">
     <h1>Create Event</h1>
 
+    <p th:text="${errorMsg}" style="color:red;"></p>
+
     <form method="post" action="/events/create">
         <div class="form-group">
             <label>Name:

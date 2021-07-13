@@ -1,19 +1,37 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Coding Events 3</title>
-</head>
+<head th:replace="fragments :: head"></head>
 
 <header>
     <div th:replace="fragments :: navigation"></div>
 </header>
-<body>
+<body class="container">
     <h1>Create Event</h1>
 
     <form method="post" action="/events/create">
-        <input type="text" name="eventName">
-        <input type="submit" value="Create Event">
+        <div class="form-group">
+            <label>Name:
+                <input type="text" th:field="${event.name}" class="form-control">
+            </label>
+            <p class="error" th:errors="${event.name}"></p>
+        </div>
+        <div class="form-group">
+            <label>Description:
+                <input type="text" th:field="${event.description}" class="form-control">
+            </label>
+            <p class="error" th:errors="${event.description}"></p>
+        </div>
+        <div class="form-group">
+            <label>contactEmail:
+                <input type="text" th:field="${event.contactEmail}" class="form-control">
+            </label>
+            <p class="error" th:errors="${event.contactEmail}"></p>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Create Event" class="btn btn-success">
+            <span><a th:href="@{/events}" class="btn btn-success">Cancel</a></span>
+        </div>
     </form>
 </body>
 </html>

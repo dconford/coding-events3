@@ -1,22 +1,44 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Coding Events 3</title>
-</head>
+<head th:replace="fragments :: head"></head>
 <header>
     <div th:replace="fragments :: navigation"></div>
 </header>
-<body>
+<body class="container">
 
     <h1>All Events (in Coding Events 3)</h1>
 
     <p th:unless="${events} and ${events.size()}">No Events Listed! <br> Please add some events</p>
-    <ul>
-        <th:block th:each="event:${events}">
-            <li th:text="${event}"> Blank Blank</li>
-        </th:block>
-    </ul>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Contact Email</th>
+                <th>Location</th>
+                <th>Thumbnail</th>
+            </tr>
+        </thead>
+        <tr th:each="event:${events}">
+            <td th:text="${event.id}">Apples</td>
+            <td th:text="${event.name}"> Blank Blank</td>
+            <td th:text="${event.description}"> Blank Blank</td>
+            <td th:text="${event.contactEmail}">Email</td>
+            <td th:replace="fragments :: address">Bl</td>
+            <td th:replace="fragments :: testimage">AAAA</td>
+            <td><a th:href="@{/events/edit/{id}(id=${event.id})}" class="btn btn-success">Edit</a></td>
+            <td><a th:href="@{/events/delete/{id}(id=${event.id})}" class="btn btn-danger">Delete</a> </td>
+        </tr>
+    </table>
+
+
+<!--    <div th:each="event: ${eventMap}">-->
+<!--        <p th:text="${event.key}">No Id!</p>-->
+<!--        <p th:text="${event.value}">No Name!</p>-->
+<!--    </div>-->
+
+
 
 </body>
 </html>

@@ -17,14 +17,19 @@ public class Event {
   @Size(max = 500, message = "The description is too long! 500 character limit.")
   private String description;
 
+  @NotBlank(message = "Email is required, Please enter an email address.")
   @Email(message = "Email format was bad, please check the address.")
   private String contactEmail;
 
 
   public Event(String name, String description, String contactEmail) {
+    this();
     this.name = name;
     this.description = description;
     this.contactEmail = contactEmail;
+  }
+
+  public Event(){
     this.id = nextId;
     nextId++;
   }
